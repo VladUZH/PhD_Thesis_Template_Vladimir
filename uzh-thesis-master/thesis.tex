@@ -1,0 +1,60 @@
+\RequirePackage{fix-cm}
+\documentclass[%
+    twoside, openany, titlepage, numbers=noenddot,%
+    cleardoublepage=empty,%
+    abstractoff,%
+]{scrreprt}
+\usepackage{etex}
+\reserveinserts{10}
+
+\input{preamble/general}
+\usepackage[final]{pdfpages}
+\usepackage[margin=1.0in]{geometry}
+\renewcommand{\baselinestretch}{1.5}
+
+% Bibliography
+\addbibresource[label=ownpubs]{ownpubs.bib}
+\addbibresource{bibliography.bib}
+\addbibresource{misc.bib}
+
+\begin{document}
+\frenchspacing
+\raggedbottom%
+\selectlanguage{english}
+\pagenumbering{roman}
+\pagestyle{scrplain}
+
+
+
+\include{frontbackmatter/titlepage} 
+\cleardoublepage\include{frontbackmatter/printpermission} % used
+\cleardoublepage\include{frontbackmatter/acknowledgments} % used
+\pagestyle{scrheadings}
+\cleardoublepage\include{frontbackmatter/contents} % used
+
+% %
+% % Mainmatter
+% %
+\cleardoublepage\pagenumbering{arabic}%
+\def\dir{chapters/introduction}
+\input{\dir/main.tex}
+
+\cleardoublepage%
+\def\dir{chapters/article_1}
+\input{\dir/main.tex}
+
+% \cleardoublepage%
+% \def\dir{chapters/article_2}
+% \input{\dir/main.tex}
+
+% \cleardoublepage%
+% \def\dir{chapters/article_3}
+% \input{\dir/main.tex}
+
+\cleardoublepage\include{frontbackmatter/bibliography}
+
+\bookmarksetup{startatroot}
+\cleardoublepage\include{frontbackmatter/cv}
+\cleardoublepage\include{frontbackmatter/publications}
+
+\end{document}
